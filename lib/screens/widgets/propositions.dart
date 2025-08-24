@@ -71,7 +71,7 @@ class _Propostions extends State<Propositions> {
                   ),
                   child: const Text(
                     "Coup de cœur voyageurs",
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

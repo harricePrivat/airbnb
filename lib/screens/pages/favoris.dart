@@ -26,6 +26,10 @@ class _FavorisState extends State<Favoris> {
             ),
             ShadButton(
               backgroundColor: AirbnbTheme.airbnbRed,
+              pressedBackgroundColor: AirbnbTheme.airbnbRed.withValues(
+                alpha: 0.9,
+              ),
+
               child: Text("Connexion"),
             ),
           ],

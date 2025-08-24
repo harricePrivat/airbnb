@@ -42,6 +42,7 @@ class _ConnexionState extends State<Connexion> {
               ),
               ShadButton(
                 backgroundColor: AirbnbTheme.airbnbRed,
+                pressedBackgroundColor: AirbnbTheme.airbnbRed.withValues(alpha: 0.9),
                 width: MediaQuery.of(context).size.width - 32,
                 child: Text("Continuer"),
               ),
@@ -60,9 +61,15 @@ class _ConnexionState extends State<Connexion> {
                 backgroundColor: Colors.white,
                 hoverBackgroundColor: const Color.fromARGB(26, 211, 210, 210),
                 width: MediaQuery.of(context).size.width - 32,
-                child: Text(
-                  "Se connecter avec Google",
-                  style: TextStyle(color: Colors.black),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    Image.asset("assets/google.png", width: 20, height: 20),
+                    Text(
+                      "Se connecter avec Facebook",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
                 ),
               ),
 
@@ -73,9 +80,15 @@ class _ConnexionState extends State<Connexion> {
                 backgroundColor: Colors.white,
                 hoverBackgroundColor: const Color.fromARGB(26, 206, 205, 205),
                 width: MediaQuery.of(context).size.width - 32,
-                child: Text(
-                  "Se connecter avec Facebook",
-                  style: TextStyle(color: Colors.black),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    Icon(Icons.facebook, color: Colors.blue),
+                    Text(
+                      "Se connecter avec Facebook",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
                 ),
               ),
             ],
