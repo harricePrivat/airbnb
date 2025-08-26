@@ -42,7 +42,7 @@ class _AccueilState extends State<Accueil> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
-            child: Icon(Icons.map, color: Colors.black),
+            child: Icon(Icons.add, color: Colors.black),
           ),
         );
       },
