@@ -1,3 +1,4 @@
+import 'package:airbnb/provider/animation_recherche.dart';
 import 'package:airbnb/provider/tab_manager.dart';
 import 'package:airbnb/screens/theme.dart';
 import 'package:airbnb/services/app_router.dart';
@@ -8,7 +9,10 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => TabManager())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => TabManager()),
+        ChangeNotifierProvider(create: (context) => AnimationRecherche()),
+      ],
       child: const MyApp(),
     ),
   );

@@ -21,6 +21,7 @@ class _AccueilState extends State<Accueil> {
         return Scaffold(
           body: listPages[tabManager.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
+            elevation: 4,
             currentIndex: tabManager.currentIndex,
             onTap: (index) {
               tabManager.changeIndex(index);
@@ -40,10 +41,10 @@ class _AccueilState extends State<Accueil> {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.add, color: Colors.black),
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {},
+          //   child: Icon(Icons.add, color: Colors.black),
+          // ),
         );
       },
     );

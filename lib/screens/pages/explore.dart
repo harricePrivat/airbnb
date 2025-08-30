@@ -23,27 +23,30 @@ class _ExploreState extends State<Explore> {
               children: [
                 InkWell(
                   onTap: () {
-                    context.push("/recherche-page");
+                       context.push("/recherche-page");
                   },
-                  child: Material(
-                    borderRadius: BorderRadius.circular(50),
-                    elevation: 0.8,
-                    child: Container(
-                      padding: EdgeInsetsGeometry.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 4,
-                        children: [
-                          Icon(Icons.search_outlined),
-                          Text("Commencer ma recherhce"),
-                        ],
+                  child: Hero(
+                    tag: "container",
+                    child: Material(
+                      borderRadius: BorderRadius.circular(50),
+                      elevation: 0.8,
+                      child: Container(
+                        padding: EdgeInsetsGeometry.all(16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          spacing: 4,
+                          children: [
+                            Icon(Icons.search_outlined),
+                            Text("Commencer ma recherhce"),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
                 TabBar(
-                  isScrollable: true,
+                  isScrollable: false,
                   tabs: [
                     Tab(text: "Logements", icon: Icon(Icons.house_outlined)),
                     Tab(

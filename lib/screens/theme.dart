@@ -9,7 +9,7 @@ class AirbnbTheme {
   static const Color airbnbLightGray = Color(0xFFF7F7F7);
   static const Color airbnbBorder = Color(0xFFDDDDDD);
   static const Color airbnbBlack = Color(0xFF000000);
-  static const Color airbnbWhite = Color(0xFFFFFFFF);
+  static const Color airbnbWhite = Color(0xFFF5F5F5);
 
   static final ThemeData theme = ThemeData(
     // Couleur primaire Airbnb
@@ -28,7 +28,6 @@ class AirbnbTheme {
 
     // Configuration des icônes
     iconTheme: const IconThemeData(color: airbnbDarkGray, size: 24.0),
-
     // AppBar dans le style Airbnb
     appBarTheme: AppBarTheme(
       backgroundColor: airbnbWhite,
@@ -84,7 +83,7 @@ class AirbnbTheme {
     cardTheme: CardThemeData(
       color: airbnbWhite,
       elevation: 2.0,
-      shadowColor: airbnbGray.withValues(alpha: 0.2),
+      shadowColor: airbnbGray.withValues(alpha: 0.4),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
     ),
 
@@ -151,7 +150,7 @@ class AirbnbTheme {
 
       // Titre de propriété/logement
       titleLarge: GoogleFonts.poppins(
-        fontSize: 16.0,
+        fontSize: 18.0,
         fontWeight: FontWeight.w600,
         color: airbnbDarkGray,
       ),
