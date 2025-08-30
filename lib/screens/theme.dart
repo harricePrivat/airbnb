@@ -25,7 +25,7 @@ class AirbnbTheme {
       onSurface: airbnbDarkGray,
       // onBackground: airbnbDarkGray,
     ),
-
+    bottomSheetTheme: BottomSheetThemeData(backgroundColor: airbnbLightGray),
     // Configuration des icônes
     iconTheme: const IconThemeData(color: airbnbDarkGray, size: 24.0),
     // AppBar dans le style Airbnb

@@ -16,15 +16,20 @@ class RechercheWhere extends StatefulWidget {
 class _RechercheWhereState extends State<RechercheWhere> {
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
-  bool whereFocused = false;
+  // bool whereFocused = false;
 
   @override
   void initState() {
     super.initState();
     focusNode.addListener(() {
-      setState(() {
-        whereFocused = focusNode.hasFocus;
-      });
+      // setState(() {
+      //   whereFocused = focusNode.hasFocus;
+      // });
+
+      Provider.of<AnimationRecherche>(
+        context,
+        listen: false,
+      ).setWhereFocus(focusNode.hasFocus);
     });
   }
 
@@ -37,7 +42,7 @@ class _RechercheWhereState extends State<RechercheWhere> {
           duration: Duration(milliseconds: 500),
           curve: Curves.easeInOut,
           width: MediaQuery.of(context).size.width,
-          height: whereFocused
+          height: isFocus.whereFocus
               ? MediaQuery.of(context).size.height / 1.4
               : (isFocus.focus[0]
                     ? MediaQuery.of(context).size.height / 2.8
@@ -80,13 +85,13 @@ class _RechercheWhereState extends State<RechercheWhere> {
                             shape: CircleBorder(),
                             child: IconButton(
                               icon: Icon(
-                                whereFocused
+                                isFocus.whereFocus
                                     ? Icons.arrow_back_ios
                                     : Icons.search,
                               ),
 
                               onPressed: () {
-                                whereFocused ? focusNode.unfocus() : ();
+                                isFocus.whereFocus ? focusNode.unfocus() : ();
                               },
                             ),
                           ),
@@ -101,7 +106,7 @@ class _RechercheWhereState extends State<RechercheWhere> {
                         ),
                         SizedBox(
                           width: double.infinity,
-                          height: whereFocused
+                          height: isFocus.whereFocus
                               ? max(
                                   0,
                                   (MediaQuery.of(context).size.height / 1.5) -
@@ -113,7 +118,7 @@ class _RechercheWhereState extends State<RechercheWhere> {
                                       170,
                                 ),
                           child: ListView(
-                            physics: whereFocused
+                            physics: isFocus.whereFocus
                                 ? ScrollPhysics()
                                 : NeverScrollableScrollPhysics(),
                             children: [
@@ -125,6 +130,9 @@ class _RechercheWhereState extends State<RechercheWhere> {
                                 ),
                                 onTap: () {
                                   focusNode.unfocus();
+                                  isFocus.reservation!.setDestination(
+                                    "A proximité",
+                                  );
                                   controller.text = "A proximité";
                                   isFocus.activeSecond();
                                 },

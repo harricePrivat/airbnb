@@ -1,5 +1,5 @@
 import 'package:airbnb/provider/animation_recherche.dart';
-import 'package:airbnb/screens/widgets/date_range.dart';
+import 'package:airbnb/screens/widgets/date_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -13,7 +13,7 @@ class RechercheWhen extends StatefulWidget {
 }
 
 class _RechercheWhenState extends State<RechercheWhen> {
-  ShadDateTimeRange? range;
+  // ShadDateTimeRange? range;
   // = ShadDateTimeRange(
   //   start: DateTime.now(),
   //   end: DateTime.now(),
@@ -42,14 +42,22 @@ class _RechercheWhenState extends State<RechercheWhen> {
                               ? textTheme.titleLarge
                               : textTheme.titleMedium,
                         ),
-                        RangeDatePicker(
-                          onRangeChanged: (value) {
-                            setState(() {
-                              range = value;
-                            });
-                            print("voici la contenu de range $range");
+                        SingleDatePicker(
+                          dateChanged: (value) {
+                            isFocus.reservation!.setDateRange(value);
                           },
                         ),
+                        // RangeDatePicker(
+                        //   onRangeChanged: (value) {
+                        //     // setState(() {
+                        //     //   range = value;
+                        //     // });
+                        //     isFocus.reservation!.setDateRange(value);
+                        //     print(
+                        //       "voici la contenu de range ${isFocus.reservation!.date}",
+                        //     );
+                        //   },
+                        // ),
                       ],
                     ),
                   ),
@@ -70,9 +78,11 @@ class _RechercheWhenState extends State<RechercheWhen> {
                           children: [
                             Text("Dates ?", style: textTheme.titleMedium),
                             Text(
-                              range == null
+                              isFocus.reservation!.date!.isSameDay(
+                                    DateTime.now(),
+                                  )
                                   ? "Ajouter des dates"
-                                  : "${range!.start!.day.toString()}/${range!.end!.month.toString()}-${range!.end!.day.toString()}/${range!.end!.month.toString()}",
+                                  : "${isFocus.reservation!.date!.day.toString()}/${isFocus.reservation!.date!.month.toString()}/${isFocus.reservation!.date!.year.toString()}",
                               style: textTheme.bodyMedium,
                             ),
                           ],

@@ -1,6 +1,5 @@
 import 'package:airbnb/models/reservation.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 class AnimationRecherche extends ChangeNotifier {
   List<bool> focus = [true, false, false];
@@ -8,7 +7,7 @@ class AnimationRecherche extends ChangeNotifier {
   Reservation? reservation = Reservation(
     animaux: 0,
     destination: "",
-    date: ShadDateTimeRange(),
+    date: DateTime.now(),
     adultes: 0,
     enfants: 0,
     bebes: 0,
@@ -29,7 +28,7 @@ class AnimationRecherche extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setDateRangeInReservation(ShadDateTimeRange date) {
+  void setDateRangeInReservation(DateTime date) {
     reservation!.setDateRange(date);
     notifyListeners();
   }
@@ -41,11 +40,13 @@ class AnimationRecherche extends ChangeNotifier {
 
   void activeSecond() {
     focus = [false, true, false];
+    whereFocus = false;
     notifyListeners();
   }
 
   void activeThrid() {
     focus = [false, false, true];
+    whereFocus = false;
     notifyListeners();
   }
 }

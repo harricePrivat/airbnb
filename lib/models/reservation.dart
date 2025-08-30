@@ -1,8 +1,6 @@
-import 'package:shadcn_ui/shadcn_ui.dart';
-
 class Reservation {
   String destination;
-  ShadDateTimeRange date;
+  DateTime? date;
   int adultes;
   int enfants;
   int bebes;
@@ -21,7 +19,7 @@ class Reservation {
     this.destination = destination;
   }
 
-  void setDateRange(ShadDateTimeRange date) {
+  void setDateRange(DateTime? date) {
     this.date = date;
   }
 
@@ -36,7 +34,6 @@ class Reservation {
   void setBebes(int bebes) {
     this.bebes = bebes;
   }
-  
 
   int sommePersonne() {
     return adultes + enfants + bebes;
