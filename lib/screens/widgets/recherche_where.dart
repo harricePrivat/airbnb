@@ -210,9 +210,9 @@ class _RechercheWhereState extends State<RechercheWhere> {
                           children: [
                             Text("Où ?", style: textTheme.titleMedium),
                             Text(
-                              controller.text.isEmpty
+                              isFocus.reservation!.destination.isEmpty
                                   ? "Ajouter une lieux"
-                                  : controller.text,
+                                  : isFocus.reservation!.destination,
                               style: textTheme.bodyMedium,
                             ),
                           ],

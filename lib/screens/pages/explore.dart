@@ -1,3 +1,4 @@
+import 'package:airbnb/screens/pages/details_place.dart';
 import 'package:airbnb/screens/widgets/propositions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,7 @@ class _ExploreState extends State<Explore> {
               children: [
                 InkWell(
                   onTap: () {
-                       context.push("/recherche-page");
+                    context.push("/recherche-page");
                   },
                   child: Hero(
                     tag: "container",
@@ -108,11 +109,22 @@ class _ExploreState extends State<Explore> {
                                     return SizedBox(width: 8);
                                   },
                                   itemBuilder: (context, i) {
-                                    return Propositions(
-                                      title: "Chambre . Paris",
-                                      price: "5ariary",
-                                      imagePath: "assets/paris.png",
-                                      rating: 4.8,
+                                    return InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AirbnbLikePage(),
+                                          ),
+                                        );
+                                      },
+                                      child: Propositions(
+                                        title: "Chambre . Paris",
+                                        price: "5ariary",
+                                        imagePath: "assets/paris.png",
+                                        rating: 4.8,
+                                      ),
                                     );
                                   },
                                 ),

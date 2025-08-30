@@ -18,6 +18,46 @@ class AnimationRecherche extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addAdultes() {
+    reservation!.adultes++;
+    notifyListeners();
+  }
+
+  void addBebes() {
+    reservation!.bebes++;
+    notifyListeners();
+  }
+
+  void addEnfants() {
+    reservation!.enfants++;
+    notifyListeners();
+  }
+
+  void addAnimaux() {
+    reservation!.animaux++;
+    notifyListeners();
+  }
+
+  void diminueAdultes() {
+    reservation!.adultes--;
+    notifyListeners();
+  }
+
+  void diminueBebes() {
+    reservation!.bebes--;
+    notifyListeners();
+  }
+
+  void diminueEnfants() {
+    reservation!.enfants--;
+    notifyListeners();
+  }
+
+  void diminueAnimaux() {
+    reservation!.animaux--;
+    notifyListeners();
+  }
+
   void setReservation(Reservation reservation) {
     this.reservation = reservation;
     notifyListeners();

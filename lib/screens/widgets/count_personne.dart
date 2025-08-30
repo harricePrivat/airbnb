@@ -3,17 +3,25 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 // ignore: must_be_immutable
 class CountPersonne extends StatefulWidget {
+  VoidCallback onAjoute;
+  VoidCallback onDiminuer;
+  int value;
   String personne;
   String description;
-  CountPersonne({super.key, required this.personne, required this.description});
+  CountPersonne({
+    super.key,
+    required this.value,
+    required this.personne,
+    required this.onAjoute,
+    required this.onDiminuer,
+    required this.description,
+  });
 
   @override
   State<CountPersonne> createState() => _CountPersonneState();
 }
 
 class _CountPersonneState extends State<CountPersonne> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -39,11 +47,12 @@ class _CountPersonneState extends State<CountPersonne> {
             children: [
               button(
                 IconButton(
-                  onPressed: () {
-                    setState(() {
-                      count > 0 ? count-- : ();
-                    });
-                  },
+                  onPressed: widget.onDiminuer,
+                  //  () {
+                  //   setState(() {
+                  //     count > 0 ? count-- : ();
+                  //   });
+                  // }
                   icon: Icon(LucideIcons.minus),
                 ),
               ),
@@ -54,19 +63,12 @@ class _CountPersonneState extends State<CountPersonne> {
                   elevation: 3,
                   child: Padding(
                     padding: EdgeInsetsGeometry.all(8),
-                    child: Text("$count", style: textTheme.titleLarge),
+                    child: Text("${widget.value}", style: textTheme.titleLarge),
                   ),
                 ),
               ),
               button(
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    setState(() {
-                      count++;
-                    });
-                  },
-                ),
+                IconButton(icon: Icon(Icons.add), onPressed: widget.onAjoute),
               ),
             ],
           ),

@@ -31,7 +31,7 @@ class _RechercheWhoState extends State<RechercheWho> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Qui ?",
+                          "Voyageurs ?",
                           style: isFocus.focus[2]
                               ? textTheme.titleLarge
                               : textTheme.titleMedium,
@@ -39,18 +39,57 @@ class _RechercheWhoState extends State<RechercheWho> {
                         CountPersonne(
                           personne: "Adultes",
                           description: "pour 18+ ans",
+                          value: isFocus.reservation!.adultes,
+                          onDiminuer: () {
+                            isFocus.reservation!.adultes > 0
+                                ? isFocus.diminueAdultes()
+                                : ();
+                          },
+                          onAjoute: () {
+                            isFocus.addAdultes();
+                          },
                         ),
                         CountPersonne(
                           personne: "Enfants",
                           description: "Entre 5 ans et 17 ans",
+                          value: isFocus.reservation!.enfants,
+
+                          onDiminuer: () {
+                            isFocus.reservation!.enfants > 0
+                                ? isFocus.diminueEnfants()
+                                : ();
+                          },
+                          onAjoute: () {
+                            isFocus.addEnfants();
+                          },
                         ),
                         CountPersonne(
                           personne: "Bébés",
                           description: "pour -5 ans",
+                          value: isFocus.reservation!.bebes,
+
+                          onDiminuer: () {
+                            isFocus.reservation!.bebes > 0
+                                ? isFocus.diminueBebes()
+                                : ();
+                          },
+                          onAjoute: () {
+                            isFocus.addBebes();
+                          },
                         ),
                         CountPersonne(
                           personne: "Animaux",
                           description: "Animaux de compagnie",
+                          value: isFocus.reservation!.animaux,
+
+                          onDiminuer: () {
+                            isFocus.reservation!.animaux > 0
+                                ? isFocus.diminueAnimaux()
+                                : ();
+                          },
+                          onAjoute: () {
+                            isFocus.addAnimaux();
+                          },
                         ),
                       ],
                     ),
@@ -70,7 +109,7 @@ class _RechercheWhoState extends State<RechercheWho> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Qui ?", style: textTheme.titleMedium),
+                            Text("Voyageurs ?", style: textTheme.titleMedium),
                             Text(
                               isFocus.reservation!.sommePersonne() == 0
                                   ? "Ajouter des personnes"

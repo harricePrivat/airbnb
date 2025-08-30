@@ -1,3 +1,4 @@
+import 'package:airbnb/models/reservation.dart';
 import 'package:airbnb/provider/animation_recherche.dart';
 import 'package:airbnb/screens/theme.dart';
 import 'package:airbnb/screens/widgets/recherche_when.dart';
@@ -61,45 +62,62 @@ class _RecherchePageState extends State<RecherchePage> {
           ),
         ),
       ),
-      bottomSheet:
-          (reservation!.destination.isNotEmpty
-          //&&
-          // reservation.date.end != DateTime.now() &&
-          // reservation.sommePersonne() != 0
-          )
-          ? SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: EdgeInsetsGeometry.all(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        "Tout effacer",
-                        style: GoogleFonts.poppins(
-                          decoration: TextDecoration.underline,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF222222),
+      bottomSheet: AnimatedSwitcher(
+        duration: Duration(seconds: 1),
+        child:
+            (reservation!.destination.isNotEmpty &&
+                !reservation.date!.isSameDay(DateTime.now()) &&
+                reservation.sommePersonne() != 0)
+            ? SizedBox(
+                key: const ValueKey("withData"), // 🔑
+                width: double.infinity,
+                child: Padding(
+                  padding: EdgeInsetsGeometry.all(16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Provider.of<AnimationRecherche>(
+                            context,
+                            listen: false,
+                          ).setReservation(
+                            Reservation(
+                              animaux: 0,
+                              destination: "",
+                              date: DateTime.now(),
+                              adultes: 0,
+                              enfants: 0,
+                              bebes: 0,
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Tout effacer",
+                          style: GoogleFonts.poppins(
+                            decoration: TextDecoration.underline,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF222222),
+                          ),
                         ),
                       ),
-                    ),
 
-                    ShadButton(
-                      backgroundColor: AirbnbTheme.airbnbRed,
-                      pressedBackgroundColor: AirbnbTheme.airbnbRed.withValues(
-                        alpha: 0.9,
+                      ShadButton(
+                        backgroundColor: AirbnbTheme.airbnbRed,
+                        pressedBackgroundColor: AirbnbTheme.airbnbRed
+                            .withValues(alpha: 0.9),
+                        child: Text("Continuer"),
                       ),
-                      child: Text("Continuer"),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+              )
+            : SizedBox(
+                key: const ValueKey("empty"), // 🔑
               ),
-            )
-          : SizedBox(),
+      ),
     );
   }
 }
